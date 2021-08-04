@@ -1,0 +1,29 @@
+<div>
+    <button (click)="addUser()">Add User</button>
+</div>
+<div>
+    <input type="text" [(ngModel)]="searchQuery"> &nbsp; <button (click)="search()">Search</button>
+</div>
+<table>
+    <thead>
+        <th> Name </th>
+        <th> Email </th>
+        <th> Gender </th>
+        <th> Hobby </th>
+        <th> About </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list">
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.gender}}</td>
+            <td>
+                <ul *ngFor="let hobby of item.hobby">
+                    <li>{{hobby}}</li>
+                </ul>
+
+            </td>
+            <td>{{item.about}}</td>
+        </tr>
+    </tbody>
+</table>

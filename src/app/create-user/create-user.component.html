@@ -1,0 +1,92 @@
+<div>
+
+
+
+
+    <div class="wrap">
+        <div class="left-section">
+
+            <div>
+                <form [formGroup]="form">
+                    <div>
+                        <input type="text" formControlName="name" placeholder="name">
+                    </div>
+                    <div>
+                        <input type="email" formControlName="email" placeholder="email">
+                    </div>
+                    <div>
+                        <input type="radio" formControlName="gender" value="male"> Male
+                    </div>
+                    <div>
+                        <input type="radio" formControlName="gender" value="female"> Female
+                    </div>
+                    <div>
+                        <input type="text" formControlName="hobbi" placeholder="hobby">&nbsp; <button (click)="addHobbies()">{{submithobbiText}}</button>
+                    </div>
+                    <div>
+                        <br>
+                        <table>
+                            <tbody>
+                                <tr *ngFor="let hobby of hobbies; let i = index">
+                                    <td>{{hobby}}</td>
+                                    <td>
+                                        <button (click)="editHobby(i)">Edit</button>
+                                        <button (click)="deleteHobby(i)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <input type="text" formControlName="about" placeholder="about yourself">
+                    </div>
+                    <br>
+
+                    <div>
+                        <button type="submit" (click)="submit()">{{submitText}}</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="right-section">
+            <br>
+            <div>
+                <div>
+                    <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="search()" placeholder="Search">
+                </div>
+                <br>
+                <table>
+                    <thead>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Gender </th>
+                        <th> Hobby </th>
+                        <th> About </th>
+                        <th> Edit </th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of list; let i = index">
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.gender}}</td>
+                            <td>
+                                <ul *ngFor="let hobby of item.hobby">
+                                    <li>{{hobby}}</li>
+                                </ul>
+
+                            </td>
+                            <td>{{item.about}}</td>
+                            <td>
+                                <button (click)="edit(i)">Edit</button>
+                                <button (click)="delete(i)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
